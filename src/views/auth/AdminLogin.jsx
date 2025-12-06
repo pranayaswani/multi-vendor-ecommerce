@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FaGoogle } from 'react-icons/fa'
-import { FaFacebook } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
+import { admin_login } from '../../store/reducers/authReducer';
 
 const AdminLogin = () => {
+
+    const dispatch = useDispatch();
+
     const [state,setState] = useState({
         email:"",
         password:""
@@ -19,7 +21,8 @@ const AdminLogin = () => {
 
     const handleClick = (e)=>{
         e.preventDefault();
-        console.log("Login Details",state.email,state.password)
+        dispatch(admin_login(state))
+        // console.log("Login Details",state.email,state.password)
     }
 
   return (
