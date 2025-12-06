@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import { FaFacebook } from 'react-icons/fa'
 
 const Login = () => {
+    const [state,setState] = useState({
+        email:"",
+        password:""
+    })
+
+    const inputHandle = (e)=>{
+      setState({
+                 ...state,
+                 [e.target.name]: e.target.value
+
+      })
+    }
+
+    const handleClick = (e)=>{
+        e.preventDefault();
+        console.log("Login Details",state.email,state.password)
+    }
+
   return (
     <div>
       
@@ -24,6 +42,8 @@ const Login = () => {
                   placeholder='Email'
                   id='email'
                   required
+                  onChange={inputHandle}
+                  value={state.email}
                 />
               </div>
 
@@ -36,12 +56,14 @@ const Login = () => {
                   placeholder='Password'
                   id='password'
                   required
+                  onChange={inputHandle}
+                  value={state.password}
                 />
               </div>
 
               
 
-              <button className='bg-slate-800 w-full hover:shadow-blue-300 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
+              <button className='bg-slate-800 w-full hover:shadow-blue-300 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3' onClick={handleClick}>
                 Sign In
               </button>
 
