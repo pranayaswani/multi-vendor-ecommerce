@@ -31,7 +31,7 @@ const Login = () => {
                 <label htmlFor="password">Password</label>
                 <input
                   className='px-3 py-2 outline-none border border-slate-700 bg-transparent rounded-md'
-                  type="text"
+                  type="password"
                   name='password'
                   placeholder='Password'
                   id='password'
